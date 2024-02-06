@@ -4,10 +4,10 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 
 
-
 class GUI:
     def __init__(self):
         fluff_folder_path = r"D:\Projects\FoodReguCheck\FoodReguCheck\fluff".replace("\\", "/")
+        self.filepath = ""
         self.window = tk.Tk()
         self.window.geometry("600x400")
         self.window.title("FoodReguCheck")
@@ -24,12 +24,13 @@ class GUI:
                                                     border_width=2, text_color="black", fg_color="burlywood2",
                                                     hover_color="sandy brown", command=self.open_collection)
         self.open_collection_button.pack()
-
-    def run(self):
         self.window.mainloop()
 
     def open_collection(self):
-        file_path = fdia.askopenfilename(title="Select your PDF file", filetypes=[("PDF files", "*.pdf")])
-        if file_path:
+        self.filepath = fdia.askopenfilename(title="Select your PDF file", filetypes=[("PDF files", "*.pdf")])
+        if self.filepath:
             self.open_collection_button.pack_forget()
-            return file_path
+            self.window.destroy()
+
+    def run(self):
+        self.window.mainloop()

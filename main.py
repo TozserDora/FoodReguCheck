@@ -11,10 +11,10 @@ import csv
 # Find the food legislation list from the file explorer
 if __name__ == "__main__":
     app = GUI()
-    pdf_file_path = app.open_collection()
+    filepath = app.filepath
 
-    if pdf_file_path:
-        pdf_file = fitz.open(pdf_file_path)
+    if filepath:
+        pdf_file = fitz.open(filepath)
         eurlex_raw, netjogtar = find_legal_documents(pdf=pdf_file)
 
         # Removing duplicates from the Eurlex list
