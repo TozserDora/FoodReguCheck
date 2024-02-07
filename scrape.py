@@ -12,7 +12,7 @@ def check_eurlex_docs(list_of_docs):
     options = Options()
     options.add_argument('--headless')  # Run Chrome in headless mode
     options.add_argument('--disable-gpu')  # Disable GPU acceleration to prevent issues
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
     results = []
     for doc in list_of_docs:
         driver.get(doc)
