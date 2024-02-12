@@ -12,7 +12,7 @@ def check_eurlex_docs(list_of_docs):
     options = Options()
     options.add_argument('--headless')  # Run Chrome in headless mode
     options.add_argument('--disable-gpu')  # Disable GPU acceleration to prevent issues
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome()
     results = []
     for doc in list_of_docs:
         driver.get(doc)
@@ -62,5 +62,11 @@ def check_eurlex_docs(list_of_docs):
         except NoSuchElementException:
             continue
     return results
+
+# list_of_everything = ["https://eur-lex.europa.eu/legal-content/HU/TXT/?uri=CELEX:32020R2236",
+#                               "https://eur-lex.europa.eu/eli/reg/2004/854/oj",
+#                               "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32004R0882",
+#                               "https://eur-lex.europa.eu/legal-content/HU/TXT/?uri=uriserv%3AOJ.L_.2023.234.01.0196.01.HUN&toc=OJ%3AL%3A2023%3A234%3ATOC"]
+# print(check_eurlex_docs(list_of_everything))
 
 
